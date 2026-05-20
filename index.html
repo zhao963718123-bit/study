@@ -3,146 +3,562 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>波兰项目英语学习网站｜单词·对话·句型</title>
+<title>波兰项目英语学习｜单词·对话·句型</title>
 <style>
-:root {
-  --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#667085; --primary:#2f5bd3;
-  --primary2:#edf3ff; --border:#d8dfeb; --ok:#12805c; --bad:#c43d3d;
-  --shadow:0 10px 28px rgba(22,40,80,0.08);
+:root{
+  --bg:#eef3ff;
+  --bg2:#f8fbff;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#667085;
+  --primary:#2f5bd3;
+  --primary2:#2449b8;
+  --soft:#edf3ff;
+  --border:#d8e2f3;
+  --ok:#12805c;
+  --bad:#c43d3d;
+  --shadow:0 18px 45px rgba(31,54,106,.12);
+  --shadow2:0 8px 24px rgba(31,54,106,.08);
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:linear-gradient(180deg,#eef4ff 0%,var(--bg) 16%);color:var(--text)}
-header{padding:16px 14px 10px;position:sticky;top:0;z-index:20;background:rgba(245,247,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,223,235,.9)}
-.wrap{max-width:1160px;margin:0 auto}
-h1{margin:0 0 6px;font-size:clamp(22px,4vw,34px)}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%, #dbe8ff 0, rgba(219,232,255,0) 32%),
+    linear-gradient(180deg,#f4f7ff 0%,#eef3ff 42%,#f8fbff 100%);
+  color:var(--text);
+  padding-bottom:86px;
+}
+header{
+  padding:12px 14px 10px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(244,247,255,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(216,226,243,.82);
+}
+.wrap{max-width:1140px;margin:0 auto}
+h1{
+  margin:0;
+  font-size:clamp(24px,4vw,34px);
+  line-height:1.15;
+  font-weight:950;
+  letter-spacing:-0.6px;
+}
 h2{margin:0 0 12px;font-size:22px}
 h3{margin:0 0 10px;font-size:18px}
-.sub{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
-.top-controls{margin-top:14px;display:grid;gap:10px}
-.select-box{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-label{font-weight:800}
-select{min-width:190px;max-width:100%;border:1px solid var(--border);border-radius:14px;padding:11px 14px;font-size:16px;background:white;color:var(--text)}
-.tab-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:3px}
-button{border:1px solid var(--border);background:white;color:var(--text);border-radius:14px;padding:11px 14px;font-weight:800;cursor:pointer;white-space:nowrap}
-button.active,button.primary{background:var(--primary);color:white;border-color:var(--primary)}
-button.secondary{background:var(--primary2);color:var(--primary);border-color:#c9d8ff}
-button.danger{background:#fff1f1;color:var(--bad);border-color:#ffcccc}
+.sub{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+  max-width:980px;
+}
+header .wrap::before{
+  content:none;
+  display:none;
+}
+.top-controls{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:minmax(220px, 420px) 1fr;
+  gap:14px;
+  align-items:end;
+}
+.select-box{
+  display:grid;
+  gap:8px;
+  align-items:center;
+}
+label{
+  font-weight:950;
+  color:#1f2a44;
+}
+select{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:15px 18px;
+  font-size:17px;
+  font-weight:850;
+  background:#fff;
+  color:var(--text);
+  box-shadow:var(--shadow2);
+  outline:none;
+}
+select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(47,91,211,.13), var(--shadow2);
+}
+.tab-row{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:4px 2px 8px;
+  scrollbar-width:thin;
+}
+button{
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  border-radius:20px;
+  padding:13px 16px;
+  font-weight:950;
+  cursor:pointer;
+  white-space:nowrap;
+  box-shadow:0 5px 14px rgba(31,54,106,.06);
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(31,54,106,.1);
+}
+button.active,button.primary{
+  background:linear-gradient(135deg,#2f5bd3,#4c74f5);
+  color:white;
+  border-color:transparent;
+  box-shadow:0 12px 26px rgba(47,91,211,.26);
+}
+button.secondary{
+  background:var(--soft);
+  color:var(--primary);
+  border-color:#c9d8ff;
+}
+button.danger{
+  background:#fff1f1;
+  color:var(--bad);
+  border-color:#ffcccc;
+}
 button:disabled{opacity:.62;cursor:not-allowed}
-main{padding:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);padding:clamp(16px,3vw,24px);margin-bottom:16px}
-.grid{display:grid;grid-template-columns:1.25fr .85fr;gap:16px}
-@media (max-width:900px){.grid{grid-template-columns:1fr}}
+main{padding:16px 14px}
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(216,226,243,.95);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  padding:clamp(18px,3vw,30px);
+  margin-bottom:18px;
+}
+.page>.grid>.card:first-child{
+  position:relative;
+  overflow:hidden;
+}
+.page>.grid>.card:first-child::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-80px;
+  width:190px;
+  height:190px;
+  background:radial-gradient(circle,rgba(47,91,211,.16),rgba(47,91,211,0) 70%);
+  pointer-events:none;
+}
+.grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+  gap:18px;
+  align-items:start;
+}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 11px;font-size:13px;font-weight:800;background:#eef4ff;color:var(--primary);border:1px solid #d7e4ff}
-.big-word{margin:14px 0 8px;font-size:clamp(30px,8vw,58px);font-weight:900;letter-spacing:-.8px}
-.cn{font-size:clamp(20px,4vw,28px);font-weight:900;margin:10px 0}
-.usage{color:var(--muted);line-height:1.75;font-size:15px}
-.option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
-@media (max-width:560px){.option-grid{grid-template-columns:1fr}}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:13px;
+  font-weight:950;
+  background:var(--soft);
+  color:var(--primary);
+  border:1px solid #d7e4ff;
+}
+.big-word{
+  margin:18px 0 8px;
+  font-size:clamp(44px,9vw,78px);
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:-2.2px;
+}
+.cn{
+  font-size:clamp(26px,5vw,44px);
+  font-weight:1000;
+  margin:18px 0 14px;
+  line-height:1.15;
+}
+.usage{
+  color:var(--muted);
+  line-height:1.75;
+  font-size:15px;
+}
+.phonetic{
+  display:inline-flex;
+  margin:8px 0 14px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#f3f7ff;
+  border:1px solid #dbe6fb;
+  color:var(--primary);
+  font-size:17px;
+  font-weight:950;
+}
+.choice-example,.spell-example,.word-example{
+  margin:12px 0 16px;
+  padding:14px 16px;
+  border-radius:22px;
+  background:linear-gradient(180deg,#f8fbff,#ffffff);
+  border:1px solid #dfe8fb;
+  box-shadow:0 8px 20px rgba(31,54,106,.05);
+}
+.example-label,.word-example-label{
+  font-size:12px;
+  font-weight:950;
+  color:var(--primary);
+  margin-bottom:7px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+}
+.example-en,.word-example-en{
+  font-size:17px;
+  font-weight:950;
+  line-height:1.65;
+  color:#1f2937;
+}
+.example-cn,.word-example-cn{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.65;
+  margin-top:4px;
+}
+.option-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.option{
+  min-height:64px;
+  font-size:17px;
+  border-radius:22px;
+}
 .option.correct{background:#ebfaee;color:var(--ok);border-color:#bce6c8}
 .option.wrong{background:#fff0f0;color:var(--bad);border-color:#ffc3c3}
-.feedback{min-height:30px;margin-top:10px;font-weight:800}
+.feedback{min-height:32px;margin-top:12px;font-weight:950}
 .ok{color:var(--ok)} .bad{color:var(--bad)}
-input{width:100%;border:1px solid var(--border);border-radius:16px;padding:14px;font-size:18px}
-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(47,91,211,.12)}
-.progressbar{height:12px;border-radius:999px;overflow:hidden;background:#eef2f8;margin-top:10px}
-.progressbar>div{height:100%;width:0;background:var(--primary);transition:width .25s ease}
-.small{color:var(--muted);line-height:1.65;font-size:13px}
-.status-box{min-height:126px;border-radius:18px;padding:14px;background:#f8faff;border:1px dashed #cfdcff;line-height:1.75}
-.word-table{width:100%;border-collapse:collapse}
-.word-table th,.word-table td{border-bottom:1px solid var(--border);padding:12px 10px;text-align:left;vertical-align:top}
-.word-table th{background:#f8fbff;color:var(--muted);font-size:13px}
-.word-table .en{font-weight:900;font-size:16px}
-.word-table tr.current{background:#fff8e6;outline:2px solid #ffd46a}
-.hidden{display:none!important}
-.read-panel{position:sticky;top:156px}
-@media (max-width:900px){.read-panel{position:static}}
-.search{margin-top:12px}
-.dialogue-card,.sentence-card{border:1px solid var(--border);border-radius:20px;padding:16px;margin:12px 0;background:#fff}
-.line{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:start;padding:12px 0;border-top:1px solid #eef2f8}
+input{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:17px 18px;
+  font-size:20px;
+  font-weight:800;
+  background:#fff;
+  box-shadow:var(--shadow2);
+}
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(47,91,211,.12), var(--shadow2);
+}
+.progressbar{
+  height:14px;
+  border-radius:999px;
+  overflow:hidden;
+  background:#eef2f8;
+  margin-top:12px;
+}
+.progressbar>div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#2f5bd3,#5b7cfa);
+  transition:width .25s ease;
+}
+.small{color:var(--muted);line-height:1.7;font-size:14px}
+.status-box{
+  min-height:138px;
+  border-radius:24px;
+  padding:16px;
+  background:linear-gradient(180deg,#f8faff,#fff);
+  border:1px dashed #cfdcff;
+  line-height:1.8;
+}
+.read-panel{
+  position:sticky;
+  top:190px;
+}
+.word-grid-note{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:22px;
+  background:#f8faff;
+  border:1px dashed #cfdcff;
+  color:var(--muted);
+  line-height:1.7;
+}
+.dictation-word-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:16px;
+}
+.dictation-word-card{
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:16px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(31,54,106,.06);
+  transition:.2s ease;
+}
+.dictation-word-card.current{
+  background:#fff8e6;
+  outline:3px solid #ffd46a;
+  transform:translateY(-2px);
+}
+.dictation-word-card .dict-no{
+  display:inline-block;
+  font-size:12px;
+  font-weight:950;
+  color:var(--primary);
+  background:#eef4ff;
+  border:1px solid #d7e4ff;
+  border-radius:999px;
+  padding:5px 9px;
+  margin-bottom:9px;
+}
+.dictation-word-card .dict-en{
+  font-size:24px;
+  font-weight:1000;
+  line-height:1.22;
+  word-break:break-word;
+}
+.dictation-word-card .dict-cn{
+  margin-top:7px;
+  font-weight:950;
+  color:#111827;
+}
+.dict-phonetic{
+  font-size:15px;
+  font-weight:950;
+  color:var(--primary);
+  margin-top:6px;
+}
+.dialogue-card,.sentence-card{
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:18px;
+  margin:14px 0;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(31,54,106,.05);
+}
+.line{
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) auto;
+  gap:12px;
+  align-items:start;
+  padding:14px 0;
+  border-top:1px solid #eef2f8;
+}
 .line:first-of-type{border-top:0}
-.role{font-weight:900;color:var(--primary)}
-.en-line{font-weight:800;font-size:16px;line-height:1.55}
-.cn-line{color:var(--muted);font-size:14px;line-height:1.6;margin-top:4px}
-.sentence-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;border-top:1px solid #eef2f8;padding:14px 0}
+.role{font-weight:1000;color:var(--primary)}
+.en-line{font-weight:950;font-size:17px;line-height:1.6}
+.cn-line{color:var(--muted);font-size:14px;line-height:1.65;margin-top:4px}
+.sentence-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:start;
+  border-top:1px solid #eef2f8;
+  padding:16px 0;
+}
 .sentence-row:first-of-type{border-top:0}
-.footer-space{height:24px}
+.hidden{display:none!important}
+.footer-space{height:22px}
 
-.dictation-word-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
-@media (max-width:900px){.dictation-word-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.dictation-word-grid{grid-template-columns:1fr}}
-.dictation-word-card{border:1px solid var(--border);border-radius:18px;padding:12px 14px;background:#fff;box-shadow:0 4px 14px rgba(22,40,80,.04);transition:.2s ease}
-.dictation-word-card.current{background:#fff8e6;outline:3px solid #ffd46a;transform:translateY(-2px)}
-.dictation-word-card .dict-no{display:inline-block;font-size:12px;font-weight:900;color:var(--primary);background:#eef4ff;border:1px solid #d7e4ff;border-radius:999px;padding:4px 8px;margin-bottom:8px}
-.dictation-word-card .dict-en{font-size:20px;font-weight:950;line-height:1.25;word-break:break-word}
-.dictation-word-card .dict-cn{margin-top:6px;font-weight:900;color:#111827}
-.dictation-word-card .dict-use{margin-top:7px;color:var(--muted);font-size:13px;line-height:1.5}
+.home-hero{
+  max-width:980px;
+  margin:0 auto 18px;
+  overflow:hidden;
+}
+.home-kicker{
+  display:inline-flex;
+  padding:7px 12px;
+  margin-bottom:12px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#2f5bd3,#5b7cfa);
+  color:#fff;
+  font-weight:950;
+  letter-spacing:.5px;
+  font-size:12px;
+}
+.home-hero h2{
+  font-size:clamp(30px,6vw,52px);
+  line-height:1.1;
+  letter-spacing:-1.4px;
+  margin-bottom:10px;
+}
+.home-select-card{
+  margin-top:18px;
+  display:grid;
+  gap:8px;
+  max-width:430px;
+}
+.home-rules{
+  margin-top:22px;
+}
+.rule-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.rule-card{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:22px;
+  padding:15px;
+  box-shadow:0 8px 20px rgba(31,54,106,.05);
+}
+.rule-card strong{
+  display:block;
+  font-size:16px;
+  margin-bottom:6px;
+}
+.rule-card span{
+  display:block;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:14px;
+}
+.home-action-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+@media (max-width:760px){
+  .rule-grid,.home-action-grid{grid-template-columns:1fr}
+}
 
 
-.word-example{margin-top:10px;padding:10px 12px;border-radius:14px;background:#f8faff;border:1px solid #e1e8f7}
-.word-example-label{font-size:12px;font-weight:900;color:var(--primary);margin-bottom:5px}
-.word-example-en{font-size:14px;font-weight:800;line-height:1.55;color:#1f2937}
-.word-example-cn{font-size:13px;line-height:1.55;color:var(--muted);margin-top:4px}
+/* Bottom quick navigation, similar to a mobile learning app */
+#bottomNav{
+  position:fixed;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  z-index:40;
+  width:min(720px,calc(100% - 22px));
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  padding:9px;
+  border-radius:26px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(216,226,243,.9);
+  box-shadow:0 18px 50px rgba(31,54,106,.18);
+}
+#bottomNav button{
+  display:grid;
+  gap:2px;
+  justify-items:center;
+  padding:9px 4px;
+  border-radius:18px;
+  font-size:12px;
+  box-shadow:none;
+}
+#bottomNav .navIcon{font-size:18px;line-height:1}
+#bottomNav button.active{
+  background:linear-gradient(135deg,#2f5bd3,#4c74f5);
+  color:#fff;
+}
 
-
-.word-grid-note{margin-top:12px;padding:12px 14px;border-radius:16px;background:#f8faff;border:1px dashed #cfdcff;color:var(--muted);line-height:1.65}
-.word-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-@media (max-width:900px){.word-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.word-card-grid{grid-template-columns:1fr}}
-.word-card{border:1px solid var(--border);border-radius:18px;padding:14px;background:#fff;box-shadow:0 4px 14px rgba(22,40,80,.04);transition:.2s ease}
-.word-card.current{background:#fff8e6;outline:3px solid #ffd46a;transform:translateY(-2px)}
-.word-card-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}
-.word-no{font-size:12px;font-weight:900;color:var(--primary);background:#eef4ff;border:1px solid #d7e4ff;border-radius:999px;padding:4px 8px}
-.word-en{font-size:22px;font-weight:950;line-height:1.25;word-break:break-word}
-.word-cn{margin-top:6px;font-weight:900;color:#111827}
-.word-use{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.55}
-
+@media (max-width:900px){
+  .top-controls{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .read-panel{position:static}
+  .dictation-word-grid{grid-template-columns:1fr}
+  header{padding:16px 14px 10px}
+  main{padding:12px}
+  .card{border-radius:26px;padding:18px}
+}
+@media (max-width:560px){
+  body{padding-bottom:92px}
+  .option-grid{grid-template-columns:1fr}
+  .line{grid-template-columns:36px minmax(0,1fr)}
+  .line button{grid-column:2}
+  .sentence-row{grid-template-columns:1fr}
+  h1{font-size:32px}
+  .sub{font-size:14px}
+  .tab-row{display:none}
+}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <h1>波兰项目英语学习网站</h1>
-    <p class="sub">包含每日30词、汉语选择、拼写听写、场景对话和必掌握句型。单词自动连读规则：每个单词读3遍，每次读完等待5秒；完成第3遍后再等6秒，自动朗读下一个单词；一次朗读当天30个单词。</p>
-    <div class="top-controls">
-      <div class="select-box">
-        <label for="daySelect">选择学习日期：</label>
-        <select id="daySelect"></select>
-      </div>
-      <div class="tab-row" id="pageTabs">
-        <button data-page="words" class="active">① 每日单词</button>
-        <button data-page="choice">② 汉语选择</button>
-        <button data-page="spell">③ 拼写 / 听写</button>
-        <button data-page="dialogues">④ 对话短语</button>
-        <button data-page="sentences">⑤ 必掌握句型</button>
-      </div>
+    <h1>波兰项目英语学习</h1>
+    
     </div>
-  </div>
 </header>
 
 <main>
 <div class="wrap">
 
-<section id="wordsPage" class="page">
+
+<section id="dictationPage" class="page hidden">
   <div class="grid">
     <div class="card">
       <div class="row">
-        <span class="badge" id="wordsDayBadge"></span>
-        <button class="primary" onclick="startWordAutoRead()">自动朗读当天30词</button>
-        <button class="danger" onclick="stopAuto()">停止自动朗读</button>
-        <button onclick="resetHighlight()">取消高亮</button>
+        <span class="badge" id="dictationDayBadge"></span>
+        <button class="primary" onclick="startDictation()">开始每日单词连续听写</button>
+        <button class="danger" onclick="stopAuto()">停止听写</button>
       </div>
-      <p class="small">页面已展示当天全部30个单词。自动朗读时按页面顺序依次朗读：每个单词读3遍，每次朗读后停留5秒；第3遍后再停留5秒，然后自动进入下一个单词。</p>
-      <div class="word-grid-note">
-        <strong>当天30个单词全部展示如下。</strong> 点击“自动朗读当天30词”后，系统会从第1个开始依次高亮朗读。
+      <p class="small">每日单词连续听写规则：当天30个单词按顺序依次朗读；每个单词读2遍，每次朗读后间隔7秒，然后进入下一个单词。当前正在听写的单词会自动高亮。</p>
+      <div class="word-grid-note" style="margin-top:18px;">
+        <strong>每日单词连续听写词表：</strong>当天30个单词全部显示如下。开始每日单词连续听写后，当前正在朗读/听写的单词会自动高亮。
       </div>
-      <div id="wordCardGrid" class="word-card-grid"></div>
+      <div id="dictationWordGrid" class="dictation-word-grid"></div>
     </div>
     <div class="card read-panel">
-      <h2>单词自动朗读状态</h2>
-      <div class="status-box" id="wordReadStatus">未开始。请选择日期后点击“自动朗读当天30词”。</div>
-      <div class="progressbar"><div id="wordReadProgress"></div></div>
-      <p class="small">手机端如首次无法发声，请先点击一次朗读按钮以激活浏览器语音权限。</p>
+      <h2>每日单词连续听写状态</h2>
+      <div class="status-box" id="dictationStatus">未开始。点击“开始每日单词连续听写”。</div>
+      <div class="progressbar"><div id="dictationProgress"></div></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="homePage" class="page">
+  <div class="card home-hero">
+    <div class="home-kicker">PROJECT ENGLISH TRAINING</div>
+    <h2>项目英语每日学习首页</h2>
+    <p class="small">请先选择学习日期，再进入对应学习模块。本网站适用于手机和电脑，建议每天按“学习 → 单词拼写 → 每日单词连续听写 → 对话短语 → 必掌握句型”的顺序完成学习。</p>
+
+    <div class="home-select-card">
+      <label for="daySelect">选择学习日期</label>
+      <select id="daySelect"></select>
+    </div>
+
+    <div class="home-rules">
+      <h3>学习说明</h3>
+      <div class="rule-grid">
+        <div class="rule-card"><strong>① 学习</strong><span>看英文、音标、例句和中文，完成学习。</span></div>
+        <div class="rule-card"><strong>② 单词拼写</strong><span>根据汉语翻译输入英文，可使用提示功能。</span></div>
+        <div class="rule-card"><strong>③ 每日单词连续听写</strong><span>每天30个单词，每个读2遍，每次间隔7秒。</span></div>
+        <div class="rule-card"><strong>④ 对话短语</strong><span>学习当天5组场景对话，支持中英对照和朗读。</span></div>
+        <div class="rule-card"><strong>⑤ 必掌握句型</strong><span>掌握当天5个关键句型，支持朗读。</span></div>
+      </div>
+    </div>
+
+    <div class="home-action-grid">
+      <button class="primary" onclick="goPage('choice')">开始学习</button>
+      <button class="secondary" onclick="goPage('spell')">单词拼写</button>
+      <button class="secondary" onclick="goPage('dictation')">每日单词连续听写</button>
+      <button class="secondary" onclick="goPage('dialogues')">对话短语</button>
+      <button class="secondary" onclick="goPage('sentences')">必掌握句型</button>
     </div>
   </div>
 </section>
@@ -156,7 +572,13 @@ input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(4
         <button onclick="nextChoice()">下一个</button>
       </div>
       <div class="big-word" id="choiceWord"></div>
-      <p class="usage" id="choiceUsage"></p>
+      <div class="phonetic" id="choicePhonetic"></div>
+      <div class="choice-example">
+        <div class="example-label">Example sentence</div>
+        <div class="example-en" id="choiceExampleEn"></div>
+        <div class="example-cn" id="choiceExampleCn"></div>
+        <button class="secondary" style="margin-top:8px;" onclick="speakChoiceExample()">朗读例句</button>
+      </div>
       <div class="option-grid" id="choiceOptions"></div>
       <div class="feedback" id="choiceFeedback"></div>
     </div>
@@ -177,34 +599,28 @@ input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(4
     <div class="card">
       <div class="row">
         <span class="badge" id="spellDayBadge"></span>
-        <button class="primary" onclick="startDictation()">开始每日自动听写</button>
         <button class="secondary" onclick="speakCurrentSpell()">朗读当前词</button>
         <button onclick="nextSpell()">下一个</button>
-        <button class="danger" onclick="stopAuto()">停止自动播放</button>
       </div>
-      <p class="small">听写同样按照单词连读规则：每个单词读3遍，每次读完等待5秒，之后进入下一个单词；下方会显示当天全部30个单词，并高亮当前听写词。</p>
+      <p class="small">本页用于单词拼写练习：根据汉语翻译输入对应英文单词/短语；需要连续听写请进入第3页“每日单词连续听写”。</p>
       <div class="cn" id="spellCN"></div>
-      <p class="usage" id="spellUsage"></p>
       <input id="spellInput" placeholder="听发音后输入英文单词/短语" autocomplete="off" onkeydown="if(event.key==='Enter') checkSpell();">
       <div class="row" style="margin-top:10px;">
         <button class="primary" onclick="checkSpell()">检查拼写</button>
+        <button class="secondary" onclick="showSpellHint()">提示</button>
         <button onclick="showSpellAnswer()">显示答案</button>
       </div>
+      <div class="feedback" id="spellHint"></div>
       <div class="feedback" id="spellFeedback"></div>
-
-      <div class="word-grid-note" style="margin-top:18px;">
-        <strong>连续听写词表：</strong>当天30个单词全部显示如下。开始自动听写后，当前正在朗读/听写的单词会自动高亮。
-      </div>
-      <div id="dictationWordGrid" class="dictation-word-grid"></div>
     </div>
     <div class="card read-panel">
-      <h2>自动听写状态</h2>
-      <div class="status-box" id="dictationStatus">未开始。点击“开始每日自动听写”。</div>
-      <div class="progressbar"><div id="dictationProgress"></div></div>
+      <h2>拼写进度</h2>
       <div class="row" style="margin-top:10px;">
         <span class="badge" id="spellIndex"></span>
         <span class="badge" id="spellScore"></span>
       </div>
+      <div class="progressbar"><div id="spellProgress"></div></div>
+      <p class="small">可手动点击“朗读当前词”，也可以按 Enter 键检查拼写。</p>
     </div>
   </div>
 </section>
@@ -253,6 +669,7 @@ input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(4
 
 <script>
 const DATA = {"words": {"周一": [{"en": "hello", "cn": "你好", "usage": "通用问候语，见面第一时间使用。"}, {"en": "good morning", "cn": "早上好", "usage": "上午12点前使用，可搭配人名：Good morning, Mr. Kowalski."}, {"en": "good afternoon", "cn": "下午好", "usage": "12点后至傍晚使用。"}, {"en": "nice to meet you", "cn": "很高兴认识你", "usage": "初次见面使用，回应：Nice to meet you too."}, {"en": "thank you", "cn": "谢谢", "usage": "通用致谢，正式场合可说：Thank you very much."}, {"en": "you're welcome", "cn": "不客气", "usage": "回应 thank you 的常用表达。"}, {"en": "my name is", "cn": "我叫", "usage": "自我介绍开头：My name is Anna."}, {"en": "from", "cn": "来自", "usage": "说明所属地/单位：I'm from the Polish branch."}, {"en": "Poland", "cn": "波兰", "usage": "国家名，搭配 from 使用。"}, {"en": "branch", "cn": "分公司", "usage": "Polish branch 波兰分公司。"}, {"en": "colleague", "cn": "同事", "usage": "指代项目团队成员：my colleague Tom."}, {"en": "friend", "cn": "朋友", "usage": "日常社交使用。"}, {"en": "family", "cn": "家人", "usage": "日常聊天话题：How is your family?"}, {"en": "live", "cn": "居住", "usage": "说明居住地：I live in Warsaw."}, {"en": "work", "cn": "工作", "usage": "说明职业：I work in the construction team."}, {"en": "project", "cn": "项目", "usage": "court building project 法院房建项目。"}, {"en": "team", "cn": "团队", "usage": "Polish project team 波兰项目团队。"}, {"en": "member", "cn": "成员", "usage": "team member 团队成员。"}, {"en": "leader", "cn": "领导", "usage": "project leader 项目领导。"}, {"en": "department", "cn": "部门", "usage": "technology department 技术部。"}, {"en": "construction", "cn": "施工", "usage": "construction management 施工管理。"}, {"en": "site", "cn": "现场", "usage": "site management 现场管理。"}, {"en": "engineer", "cn": "工程师", "usage": "civil engineer 土建工程师。"}, {"en": "architect", "cn": "建筑师", "usage": "architect for the court project 法院项目建筑师。"}, {"en": "contractor", "cn": "承包商", "usage": "general contractor 总承包商。"}, {"en": "client", "cn": "业主", "usage": "client representative 业主代表。"}, {"en": "supervisor", "cn": "监理", "usage": "supervisory agent 监理单位。"}, {"en": "drawing", "cn": "图纸", "usage": "building drawings 建筑图纸。"}, {"en": "permit", "cn": "许可证", "usage": "construction permit 施工许可证。"}, {"en": "schedule", "cn": "进度表", "usage": "project schedule 项目进度表。"}], "周二": [{"en": "Monday", "cn": "周一", "usage": "星期表达，项目周报常用：The report is due next Monday."}, {"en": "Tuesday", "cn": "周二", "usage": "星期表达，项目周报常用。"}, {"en": "Wednesday", "cn": "周三", "usage": "星期表达，项目周报常用。"}, {"en": "Thursday", "cn": "周四", "usage": "星期表达，项目周报常用。"}, {"en": "Friday", "cn": "周五", "usage": "星期表达，项目周报常用。"}, {"en": "Saturday", "cn": "周六", "usage": "周末休息日表达。"}, {"en": "Sunday", "cn": "周日", "usage": "周末休息日表达。"}, {"en": "today", "cn": "今天", "usage": "日常沟通：What's your plan today?"}, {"en": "tomorrow", "cn": "明天", "usage": "安排工作：We'll have a meeting tomorrow."}, {"en": "yesterday", "cn": "昨天", "usage": "同步进展：We finished the task yesterday."}, {"en": "morning", "cn": "早上", "usage": "时间划分：tomorrow morning 明天早上。"}, {"en": "afternoon", "cn": "下午", "usage": "时间划分：this afternoon 今天下午。"}, {"en": "evening", "cn": "晚上", "usage": "日常表达：See you tomorrow evening."}, {"en": "night", "cn": "夜晚", "usage": "晚安表达：Good night."}, {"en": "time", "cn": "时间", "usage": "询问时间：What time is the meeting?"}, {"en": "deadline", "cn": "截止日期", "usage": "项目管控：The deadline for the foundation work is next Friday."}, {"en": "milestone", "cn": "里程碑", "usage": "节点验收：milestone inspection 中间验收。"}, {"en": "timeline", "cn": "时间表", "usage": "项目规划：project timeline 项目时间表。"}, {"en": "schedule", "cn": "日程/进度", "usage": "进度跟踪：schedule tracking 工期跟踪。"}, {"en": "meeting", "cn": "会议", "usage": "项目会议：weekly meeting 每周例会。"}, {"en": "report", "cn": "报告", "usage": "项目文档：weekly report 周报、monthly report 月报。"}, {"en": "update", "cn": "更新", "usage": "进展同步：project update 项目进展更新。"}, {"en": "task", "cn": "任务", "usage": "finish the task 完成任务。"}, {"en": "finish", "cn": "完成", "usage": "进度说明：We finished the site leveling yesterday."}, {"en": "start", "cn": "开始", "usage": "开工表达：The construction started last week."}, {"en": "week", "cn": "周", "usage": "时间单位：this week 本周。"}, {"en": "month", "cn": "月", "usage": "时间单位：next month 下月。"}, {"en": "quarter", "cn": "季度", "usage": "项目周期：Q3 第三季度。"}, {"en": "year", "cn": "年", "usage": "项目周期：this year 今年。"}, {"en": "plan", "cn": "计划", "usage": "项目规划：construction plan 施工计划。"}], "周三": [{"en": "need", "cn": "需要", "usage": "需求表达：I need your help."}, {"en": "want", "cn": "想要", "usage": "日常表达：I want a cup of coffee."}, {"en": "help", "cn": "帮助", "usage": "求助：Can you help me?"}, {"en": "ask", "cn": "询问", "usage": "提问：I want to ask a question."}, {"en": "answer", "cn": "回答", "usage": "回应提问：Let me answer your question."}, {"en": "question", "cn": "问题", "usage": "工作沟通：Do you have any questions?"}, {"en": "problem", "cn": "问题", "usage": "故障说明：We have a technical problem."}, {"en": "solution", "cn": "解决方案", "usage": "问题解决：We found a solution."}, {"en": "water", "cn": "水", "usage": "日常需求：Can I have a bottle of water?"}, {"en": "coffee", "cn": "咖啡", "usage": "日常饮品：Let's have a coffee break."}, {"en": "lunch", "cn": "午餐", "usage": "工作安排：Let's have lunch together."}, {"en": "break", "cn": "休息", "usage": "工作间隙：Take a 10-minute break."}, {"en": "busy", "cn": "忙", "usage": "状态说明：I'm busy with the report."}, {"en": "free", "cn": "空闲", "usage": "时间询问：Are you free this afternoon?"}, {"en": "happy", "cn": "开心", "usage": "情绪表达：I'm happy with the progress."}, {"en": "requirement", "cn": "需求", "usage": "client requirement 业主需求。"}, {"en": "blocker", "cn": "阻塞点", "usage": "问题反馈：We have a blocker with the permit."}, {"en": "delay", "cn": "延迟", "usage": "进度说明：The delivery is delayed by 2 days."}, {"en": "adjustment", "cn": "调整", "usage": "计划变更：schedule adjustment 进度调整。"}, {"en": "priority", "cn": "优先级", "usage": "high priority task 高优先级任务。"}, {"en": "resource", "cn": "资源", "usage": "labor resource 劳动力资源。"}, {"en": "clarification", "cn": "澄清", "usage": "需求确认：need a clarification on the design."}, {"en": "feedback", "cn": "反馈", "usage": "client feedback 业主反馈。"}, {"en": "approval", "cn": "批准", "usage": "流程节点：get the approval from the client."}, {"en": "demo", "cn": "演示", "usage": "方案展示：design demo 设计方案演示。"}, {"en": "client", "cn": "业主", "usage": "法院项目业主：client for the court project."}, {"en": "stakeholder", "cn": "利益相关者", "usage": "项目相关方：All stakeholders will join the meeting."}, {"en": "deliverable", "cn": "交付物", "usage": "项目成果：The deliverable is the completed building."}, {"en": "scope", "cn": "范围", "usage": "project scope 项目范围。"}, {"en": "coordination", "cn": "协调", "usage": "site coordination 现场协调。"}], "周四": [{"en": "like", "cn": "喜欢", "usage": "偏好表达：I like Polish food."}, {"en": "love", "cn": "爱", "usage": "强烈喜好：I love traveling."}, {"en": "hate", "cn": "讨厌", "usage": "反感表达：I hate being late."}, {"en": "food", "cn": "食物", "usage": "日常话题：What's your favorite food?"}, {"en": "music", "cn": "音乐", "usage": "休闲话题：I listen to music after work."}, {"en": "movie", "cn": "电影", "usage": "周末活动：Let's watch a movie."}, {"en": "book", "cn": "书", "usage": "阅读习惯：I'm reading a book about construction."}, {"en": "travel", "cn": "旅行", "usage": "假期安排：I travel to Krakow last month."}, {"en": "weekend", "cn": "周末", "usage": "时间表达：Have a nice weekend."}, {"en": "holiday", "cn": "假期", "usage": "休假说明：I'll take a holiday next month."}, {"en": "gift", "cn": "礼物", "usage": "社交场景：This is a gift for you."}, {"en": "party", "cn": "派对", "usage": "社交活动：We have a team party on Friday."}, {"en": "birthday", "cn": "生日", "usage": "祝福表达：Happy birthday!"}, {"en": "weather", "cn": "天气", "usage": "日常寒暄：The weather is sunny today."}, {"en": "sunny", "cn": "晴朗的", "usage": "天气描述：It's a sunny day."}, {"en": "stand-up", "cn": "站会", "usage": "每日同步：daily stand-up 每日站会。"}, {"en": "sync", "cn": "同步", "usage": "信息对齐：team sync 团队同步会。"}, {"en": "action item", "cn": "行动项", "usage": "action item for me 我的行动项。"}, {"en": "follow up", "cn": "跟进", "usage": "任务追踪：follow up the permit approval."}, {"en": "agenda", "cn": "议程", "usage": "meeting agenda 会议议程。"}, {"en": "minutes", "cn": "会议纪要", "usage": "meeting minutes 会议纪要。"}, {"en": "decision", "cn": "决策", "usage": "make a decision 做决策。"}, {"en": "objection", "cn": "异议", "usage": "Any objections? 有异议吗？"}, {"en": "consensus", "cn": "共识", "usage": "reach a consensus 达成共识。"}, {"en": "wrap up", "cn": "收尾", "usage": "会议结束：Let's wrap up the meeting."}, {"en": "presentation", "cn": "演示", "usage": "project presentation 项目演示。"}, {"en": "discuss", "cn": "讨论", "usage": "discuss the schedule 讨论进度。"}, {"en": "talk", "cn": "谈话", "usage": "沟通表达：have a talk with the client."}, {"en": "share", "cn": "分享", "usage": "信息同步：share the report with the team."}, {"en": "quality", "cn": "质量", "usage": "quality control 质量控制。"}], "周五": [{"en": "buy", "cn": "买", "usage": "购物表达：I want to buy a bag."}, {"en": "sell", "cn": "卖", "usage": "销售表达：The shop sells construction tools."}, {"en": "price", "cn": "价格", "usage": "询问价格：What's the price of this?"}, {"en": "cheap", "cn": "便宜的", "usage": "价格评价：This tool is very cheap."}, {"en": "expensive", "cn": "贵的", "usage": "价格评价：The material is too expensive."}, {"en": "shop", "cn": "商店", "usage": "日常场所：hardware shop 五金店。"}, {"en": "supermarket", "cn": "超市", "usage": "日常采购：go to the supermarket."}, {"en": "market", "cn": "市场", "usage": "building material market 建材市场。"}, {"en": "clothes", "cn": "衣服", "usage": "work clothes 工作服。"}, {"en": "shoes", "cn": "鞋子", "usage": "safety shoes 安全鞋。"}, {"en": "bag", "cn": "包", "usage": "tool bag 工具包。"}, {"en": "money", "cn": "钱", "usage": "支付相关：I don't have enough money."}, {"en": "pay", "cn": "支付", "usage": "pay by card 刷卡支付。"}, {"en": "card", "cn": "卡", "usage": "bank card 银行卡。"}, {"en": "cash", "cn": "现金", "usage": "pay in cash 现金支付。"}, {"en": "demo", "cn": "演示", "usage": "design demo 设计方案演示。"}, {"en": "presentation", "cn": "演示/汇报", "usage": "project presentation 项目汇报。"}, {"en": "key point", "cn": "核心要点", "usage": "汇报重点：the key point of the design."}, {"en": "highlight", "cn": "亮点", "usage": "方案优势：the highlight of the building design."}, {"en": "data", "cn": "数据", "usage": "test data 测试数据。"}, {"en": "metric", "cn": "指标", "usage": "quality metric 质量指标。"}, {"en": "Q&A", "cn": "问答环节", "usage": "Q&A session 问答环节。"}, {"en": "clarify", "cn": "澄清", "usage": "疑问解答：clarify the question."}, {"en": "elaborate", "cn": "详细说明", "usage": "深入解释：elaborate on the design idea."}, {"en": "summary", "cn": "总结", "usage": "汇报收尾：summary of the meeting."}, {"en": "next step", "cn": "下一步", "usage": "计划安排：next step of the project."}, {"en": "progress", "cn": "进展", "usage": "project progress 项目进展。"}, {"en": "status", "cn": "状态", "usage": "current status 当前状态。"}, {"en": "result", "cn": "结果", "usage": "inspection result 验收结果。"}, {"en": "success", "cn": "成功", "usage": "project success 项目成功。"}]}, "dialogues": {"周一": [{"title": "日常初次见面", "lines": [{"role": "A", "en": "Hello, nice to meet you! My name is Anna, I'm from Poland branch of the construction company.", "cn": "你好，很高兴认识你！我叫安娜，来自这家建筑公司的波兰分公司。"}, {"role": "B", "en": "Hello Anna, nice to meet you too. I'm Tom, I work as a civil engineer in the site department.", "cn": "你好安娜，我也很高兴认识你。我叫汤姆，我在现场部做土建工程师。"}]}, {"title": "项目团队内部问候", "lines": [{"role": "A", "en": "Good morning everyone, this is Anna from the Polish court building project team, I'm the technical member.", "cn": "大家早上好，我是波兰法院房建项目团队的安娜，我是技术成员。"}, {"role": "B", "en": "Good morning Anna, welcome to the team! I'm the project leader, call me David. We're glad to have Polish colleagues join us.", "cn": "早上好安娜，欢迎加入团队！我是项目经理，叫我大卫就好。很高兴有波兰同事加入我们。"}]}, {"title": "简单工作场景问好", "lines": [{"role": "A", "en": "Hi, how are you today? Are you busy with the court project?", "cn": "嗨，你今天怎么样？法院项目忙吗？"}, {"role": "B", "en": "I'm fine, thanks. A bit busy preparing the construction permit documents, but everything goes well. What about you?", "cn": "我很好，谢谢。有点忙，在准备施工许可证文件，但一切顺利。你呢？"}]}, {"title": "介绍项目身份", "lines": [{"role": "A", "en": "Let me introduce myself: I'm Piotr, a site supervisor from Poland, responsible for the quality inspection of the court building project.", "cn": "让我自我介绍一下：我是彼得，来自波兰的现场监理，负责法院房建项目的质量检查。"}, {"role": "B", "en": "Great to meet you Piotr. I'm the client representative from the Polish Ministry of Justice, I'll coordinate with you on acceptance inspections.", "cn": "很高兴认识你彼得。我是波兰司法部的业主代表，后续验收工作会和您对接。"}]}, {"title": "日常寒暄", "lines": [{"role": "A", "en": "Do you live near the construction site? The traffic in Warsaw is always busy in the morning.", "cn": "你住在工地附近吗？华沙早上的交通总是很堵。"}, {"role": "B", "en": "Yes, I live about 15 minutes' walk from the site. It's very convenient for me to get to work. How about you?", "cn": "是的，我住的地方离工地步行大概15分钟。上班很方便。你呢？"}]}], "周二": [{"title": "日常日程询问", "lines": [{"role": "A", "en": "What's your schedule today? Do you have free time in the afternoon to check the drawings?", "cn": "你今天日程怎么样？下午有空核对图纸吗？"}, {"role": "B", "en": "I have a site coordination meeting at 2 PM, but I'm free after 4 PM. We can check the drawings then.", "cn": "我下午2点有个现场协调会，但4点后有空。我们可以那时候核对图纸。"}]}, {"title": "项目时间同步", "lines": [{"role": "A", "en": "Our first milestone for the court project is the foundation completion, due next Friday. Can you finish the inspection by then?", "cn": "我们法院项目的第一个里程碑是地基完成，下周五截止。你能在那之前完成检查吗？"}, {"role": "B", "en": "No problem, I'll finish the concealed work inspection by Thursday, and send you the update on Friday morning.", "cn": "没问题，我周四前完成隐蔽工程验收，周五早上给你发更新。"}]}, {"title": "会议安排沟通", "lines": [{"role": "A", "en": "We have a project weekly meeting tomorrow morning at 10 AM, don't forget! The client representative will join us.", "cn": "我们明天早上10点有个项目周例会，别忘了！业主代表会参加。"}, {"role": "B", "en": "Got it, I'll prepare the weekly progress report tonight. See you tomorrow at the site office.", "cn": "收到，我今晚准备周进度报告。明天工地办公室见。"}]}, {"title": "进度询问", "lines": [{"role": "A", "en": "How is the site leveling work going? The schedule shows it should be finished by yesterday.", "cn": "场地平整工作进展怎么样？进度表显示昨天就该完成了。"}, {"role": "B", "en": "We finished 90% of the work, the rest will be done this afternoon. No delay to the overall timeline.", "cn": "我们完成了90%的工作，剩下的今天下午做完。不会整体工期延迟。"}]}, {"title": "周末安排", "lines": [{"role": "A", "en": "What are you doing this weekend? The site is closed on Saturday and Sunday, right?", "cn": "你这周末打算做什么？工地周六周日停工对吧？"}, {"role": "B", "en": "Yes, I'll stay at home and rest. Maybe go to the old town in Warsaw on Sunday if the weather is good.", "cn": "对，我会在家休息。如果天气好，周日可能去华沙老城逛逛。"}]}], "周三": [{"title": "日常需求提出", "lines": [{"role": "A", "en": "Excuse me, can you help me? I need the key to the site office, I left mine at home.", "cn": "打扰一下，你能帮我吗？我需要工地办公室的钥匙，我把我的落家里了。"}, {"role": "B", "en": "Sure, here is the spare key. Remember to return it to the security guard after work.", "cn": "当然，给你备用钥匙。记得下班后还给保安。"}]}, {"title": "项目问题反馈", "lines": [{"role": "A", "en": "Hi David, I have a blocker: the construction permit hasn't been approved yet, can you help coordinate with the local government?", "cn": "嗨大卫，我有个阻塞问题：施工许可证还没批下来，你能帮忙和当地政府协调吗？"}, {"role": "B", "en": "No problem, I'll contact the government permitting liaison in 10 minutes. Sorry for the delay.", "cn": "没问题，我10分钟内联系政府报批员。抱歉给你带来延迟。"}]}, {"title": "需求澄清沟通", "lines": [{"role": "A", "en": "Can you give me a clarification on the client's requirement for the court's security system? I'm not sure about the scope.", "cn": "你能给我澄清一下业主对法院安防系统的需求吗？我不太确定范围。"}, {"role": "B", "en": "Sure, let's have a 10-minute sync after lunch, I'll explain the detailed requirements to you.", "cn": "当然，我们午饭后开10分钟同步会，我给你详细解释需求。"}]}, {"title": "资源申请", "lines": [{"role": "A", "en": "We need more concrete workers for the foundation work, can you arrange 5 more people by tomorrow?", "cn": "我们地基工作需要更多混凝土工人，你能在明天前再安排5个人吗？"}, {"role": "B", "en": "I'll check the resource pool and give you feedback this afternoon. No problem if we have available workers.", "cn": "我查一下资源池，今天下午给你反馈。如果有可用工人就没问题。"}]}, {"title": "日常休息闲聊", "lines": [{"role": "A", "en": "Let's take a 15-minute break, I really need a cup of coffee. The weather is so hot today.", "cn": "我们休息15分钟吧，我真的需要一杯咖啡。今天天气太热了。"}, {"role": "B", "en": "Good idea. I'll go to the temporary canteen to buy two bottles of water. Do you want one?", "cn": "好主意。我去临时食堂买两瓶水。你要一瓶吗？"}]}], "周四": [{"title": "日常周末聊天", "lines": [{"role": "A", "en": "How was your weekend? Did you travel anywhere in Poland?", "cn": "你周末过得怎么样？在波兰去哪里旅行了吗？"}, {"role": "B", "en": "It was great! I went to the mountains with my family, the weather was sunny and warm.", "cn": "特别好！我和家人去了山里，天气晴朗又温暖。"}]}, {"title": "项目站会发言", "lines": [{"role": "A", "en": "Quick update from Polish team: yesterday we finished the site leveling, today we start the foundation work, blocker is the pending concrete delivery.", "cn": "波兰团队快速同步：昨天我们完成了场地平整，今天开始地基工作，阻塞点是待交付的混凝土。"}, {"role": "B", "en": "Noted, I'll follow up the concrete supplier, action item for me. Any objections to the schedule?", "cn": "收到，我会跟进混凝土供应商，这是我的行动项。大家对进度有异议吗？"}]}, {"title": "会议收尾沟通", "lines": [{"role": "A", "en": "That's all for today's weekly meeting, let's wrap up. I'll send the minutes to all stakeholders later.", "cn": "今天的周例会就到这，我们收尾吧。我稍后把会议纪要发给所有利益相关者。"}, {"role": "B", "en": "Great, see you all on site tomorrow. Have a good day!", "cn": "好的，明天工地见。祝大家今天愉快！"}]}, {"title": "会议讨论", "lines": [{"role": "A", "en": "I want to discuss the safety training arrangement for the new workers. We need to finish it before they enter the site.", "cn": "我想讨论新工人的安全培训安排。我们需要在他们进工地前完成培训。"}, {"role": "B", "en": "Good point. Let's add this to the agenda of next Monday's stand-up meeting, and assign an action item to the safety engineer.", "cn": "有道理。我们把它加到下周一站会的议程里，给安全工程师分配一个行动项。"}]}, {"title": "日常社交", "lines": [{"role": "A", "en": "Do you like Polish traditional food? My mom made pierogi last weekend, it was delicious.", "cn": "你喜欢波兰传统食物吗？我妈妈上周末做了饺子，特别好吃。"}, {"role": "B", "en": "I love it! I tried pierogi last month, and I also like bigos, the hunter's stew. It's very tasty.", "cn": "我超爱！我上个月吃过饺子，我还喜欢猎人炖菜。特别美味。"}]}], "周五": [{"title": "日常超市购物", "lines": [{"role": "A", "en": "Excuse me, how much is this safety helmet? It looks like the one we use on the site.", "cn": "打扰一下，这个安全帽多少钱？看起来和我们工地用的一样。"}, {"role": "B", "en": "It's 80 zlotys, it's on sale today, usually 120 zlotys. It meets all safety regulations.", "cn": "80兹罗提，今天打折，平时120兹罗提。它符合所有安全规定。"}]}, {"title": "项目小演示开场", "lines": [{"role": "A", "en": "Good morning everyone, thanks for joining this short demo. Today I'll show you the updated design for the court building's main hall.", "cn": "大家早上好，感谢参加这次短演示。今天我给大家展示法院大楼主厅的更新设计。"}, {"role": "B", "en": "Thanks Anna, we're looking forward to it. What's the key highlight of the new design?", "cn": "谢谢安娜，我们很期待。新设计的核心亮点是什么？"}]}, {"title": "演示问答回应", "lines": [{"role": "A", "en": "The new design adds more natural light, which reduces the energy cost by 30%, based on our calculation data.", "cn": "新设计增加了更多自然光，根据我们的计算数据，能降低30%的能源成本。"}, {"role": "B", "en": "Great, can you elaborate on the energy saving data? Is it approved by the local authority?", "cn": "很棒，你能详细说明一下节能数据吗？有没有得到当地部门的批准？"}]}, {"title": "采购沟通", "lines": [{"role": "A", "en": "We need to buy 100 more safety shoes for the workers, can you place the order today? The price should be within our budget.", "cn": "我们需要给工人再买100双安全鞋，你今天能下订单吗？价格要在我们预算内。"}, {"role": "B", "en": "I'll check the price in the supermarket and the hardware shop, and place the order this afternoon. The budget is 150 zlotys per pair, right?", "cn": "我查一下超市和五金店的价格，今天下午下订单。预算是每双150兹罗提对吧？"}]}, {"title": "日常购物闲聊", "lines": [{"role": "A", "en": "I want to buy a gift for my daughter's birthday, do you know any good shops near the site?", "cn": "我想给我女儿买个生日礼物，你知道工地附近有什么好的商店吗？"}, {"role": "B", "en": "There's a nice gift shop near the supermarket, they sell toys and books. I bought a gift there last month, the price is reasonable.", "cn": "超市附近有个不错的礼品店，卖玩具和书。我上个月在那买了个礼物，价格很合理。"}]}]}, "keySentences": {"周一": [{"en": "My name is [Name], I'm from the Polish branch and work on the court building project.", "cn": "我叫[姓名]，来自波兰分公司，参与法院房建项目工作。"}, {"en": "I work as a [position] in the [department] department.", "cn": "我在[某]部门担任[某]职位。"}, {"en": "Nice to meet you, I'm a member of the Polish court building project team.", "cn": "很高兴认识你，我是波兰法院房建项目的成员。"}, {"en": "Good morning/afternoon, everyone from the site team.", "cn": "现场团队的各位，早上好/下午好。"}, {"en": "Thank you for your help with the permit documents.", "cn": "谢谢你在许可证文件上的帮助。"}], "周二": [{"en": "The deadline for [task] is next [week/day].", "cn": "[某任务]的截止时间是下[周/天]。"}, {"en": "I have a [meeting name] at [time] today.", "cn": "我今天[某时间]有个[某会议]。"}, {"en": "Our project milestone is due on [date].", "cn": "我们的项目里程碑[某日期]截止。"}, {"en": "I'll send you the progress update tomorrow.", "cn": "我明天给你发进展更新。"}, {"en": "Can you finish the inspection task by [time]?", "cn": "你能在[某时间]前完成验收任务吗？"}], "周三": [{"en": "I need your help with [thing].", "cn": "我在[某事]上需要你的帮助。"}, {"en": "I have a blocker: [problem].", "cn": "我有个阻塞问题：[某问题]。"}, {"en": "Can you give me a clarification on [thing]?", "cn": "你能给我澄清一下[某事]吗？"}, {"en": "I'll send you the approval/update later.", "cn": "我稍后给你发批准/更新。"}, {"en": "Let's have a sync after [time].", "cn": "我们[某时间]后开个同步会吧。"}], "周四": [{"en": "How was your weekend?", "cn": "你周末过得怎么样？"}, {"en": "Quick update: I finished [task] yesterday.", "cn": "快速同步：我昨天完成了[某任务]。"}, {"en": "Action item for me: follow up [thing].", "cn": "我的行动项：跟进[某事]。"}, {"en": "Let's wrap up the meeting.", "cn": "我们收尾会议吧。"}, {"en": "I'll send the minutes to you later.", "cn": "我稍后把会议纪要发给你。"}], "周五": [{"en": "How much is this [thing]?", "cn": "这个[某物]多少钱？"}, {"en": "Today I'll show you [thing].", "cn": "今天我给大家展示[某物]。"}, {"en": "The key highlight is [point].", "cn": "核心亮点是[某要点]。"}, {"en": "It reduces the cost by [X]%.", "cn": "它把成本降低了[X]%。"}, {"en": "Can you elaborate on [thing]?", "cn": "你能详细说明一下[某事]吗？"}]}};
+const PHONETICS = {"hello": "/həˈloʊ/", "good morning": "/ˌɡʊd ˈmɔːrnɪŋ/", "good afternoon": "/ˌɡʊd ˌæftərˈnuːn/", "nice to meet you": "/ˌnaɪs tə ˈmiːt juː/", "thank you": "/ˈθæŋk juː/", "you're welcome": "/jʊr ˈwelkəm/", "my name is": "/maɪ ˈneɪm ɪz/", "from": "/frʌm/", "Poland": "/ˈpoʊlənd/", "branch": "/bræntʃ/", "colleague": "/ˈkɑːliːɡ/", "friend": "/frend/", "family": "/ˈfæməli/", "live": "/lɪv/", "work": "/wɜːrk/", "project": "/ˈprɑːdʒekt/", "team": "/tiːm/", "member": "/ˈmembər/", "leader": "/ˈliːdər/", "department": "/dɪˈpɑːrtmənt/", "construction": "/kənˈstrʌkʃən/", "site": "/saɪt/", "engineer": "/ˌendʒɪˈnɪr/", "architect": "/ˈɑːrkɪtekt/", "contractor": "/ˈkɑːntræktər/", "client": "/ˈklaɪənt/", "supervisor": "/ˈsuːpərvaɪzər/", "drawing": "/ˈdrɔːɪŋ/", "permit": "/ˈpɜːrmɪt/", "schedule": "/ˈskedʒuːl/", "Monday": "/ˈmʌndeɪ/", "Tuesday": "/ˈtuːzdeɪ/", "Wednesday": "/ˈwenzdeɪ/", "Thursday": "/ˈθɜːrzdeɪ/", "Friday": "/ˈfraɪdeɪ/", "Saturday": "/ˈsætərdeɪ/", "Sunday": "/ˈsʌndeɪ/", "today": "/təˈdeɪ/", "tomorrow": "/təˈmɑːroʊ/", "yesterday": "/ˈjestərdeɪ/", "morning": "/ˈmɔːrnɪŋ/", "afternoon": "/ˌæftərˈnuːn/", "evening": "/ˈiːvnɪŋ/", "night": "/naɪt/", "time": "/taɪm/", "deadline": "/ˈdedlaɪn/", "milestone": "/ˈmaɪlstoʊn/", "timeline": "/ˈtaɪmlaɪn/", "meeting": "/ˈmiːtɪŋ/", "report": "/rɪˈpɔːrt/", "update": "/ˈʌpdeɪt/", "task": "/tæsk/", "finish": "/ˈfɪnɪʃ/", "start": "/stɑːrt/", "week": "/wiːk/", "month": "/mʌnθ/", "quarter": "/ˈkwɔːrtər/", "year": "/jɪr/", "plan": "/plæn/", "need": "/niːd/", "want": "/wɑːnt/", "help": "/help/", "ask": "/æsk/", "answer": "/ˈænsər/", "question": "/ˈkwestʃən/", "problem": "/ˈprɑːbləm/", "solution": "/səˈluːʃən/", "water": "/ˈwɔːtər/", "coffee": "/ˈkɔːfi/", "lunch": "/lʌntʃ/", "break": "/breɪk/", "busy": "/ˈbɪzi/", "free": "/friː/", "happy": "/ˈhæpi/", "requirement": "/rɪˈkwaɪərmənt/", "blocker": "/ˈblɑːkər/", "delay": "/dɪˈleɪ/", "adjustment": "/əˈdʒʌstmənt/", "priority": "/praɪˈɔːrəti/", "resource": "/ˈriːsɔːrs/", "clarification": "/ˌklærəfɪˈkeɪʃən/", "feedback": "/ˈfiːdbæk/", "approval": "/əˈpruːvəl/", "demo": "/ˈdemoʊ/", "stakeholder": "/ˈsteɪkhoʊldər/", "deliverable": "/dɪˈlɪvərəbl/", "scope": "/skoʊp/", "coordination": "/koʊˌɔːrdɪˈneɪʃən/", "like": "/laɪk/", "love": "/lʌv/", "hate": "/heɪt/", "food": "/fuːd/", "music": "/ˈmjuːzɪk/", "movie": "/ˈmuːvi/", "book": "/bʊk/", "travel": "/ˈtrævəl/", "weekend": "/ˈwiːkend/", "holiday": "/ˈhɑːlədeɪ/", "gift": "/ɡɪft/", "party": "/ˈpɑːrti/", "birthday": "/ˈbɜːrθdeɪ/", "weather": "/ˈweðər/", "sunny": "/ˈsʌni/", "stand-up": "/ˈstænd ʌp/", "sync": "/sɪŋk/", "action item": "/ˈækʃən ˈaɪtəm/", "follow up": "/ˈfɑːloʊ ʌp/", "agenda": "/əˈdʒendə/", "minutes": "/ˈmɪnɪts/", "decision": "/dɪˈsɪʒən/", "objection": "/əbˈdʒekʃən/", "consensus": "/kənˈsensəs/", "wrap up": "/ˈræp ʌp/", "presentation": "/ˌprezənˈteɪʃən/", "discuss": "/dɪˈskʌs/", "talk": "/tɔːk/", "share": "/ʃer/", "quality": "/ˈkwɑːləti/", "buy": "/baɪ/", "sell": "/sel/", "price": "/praɪs/", "cheap": "/tʃiːp/", "expensive": "/ɪkˈspensɪv/", "shop": "/ʃɑːp/", "supermarket": "/ˈsuːpərmɑːrkɪt/", "market": "/ˈmɑːrkɪt/", "clothes": "/kloʊðz/", "shoes": "/ʃuːz/", "bag": "/bæɡ/", "money": "/ˈmʌni/", "pay": "/peɪ/", "card": "/kɑːrd/", "cash": "/kæʃ/", "key point": "/ˈkiː pɔɪnt/", "highlight": "/ˈhaɪlaɪt/", "data": "/ˈdeɪtə/", "metric": "/ˈmetrɪk/", "Q&A": "/ˌkjuː ən ˈeɪ/", "clarify": "/ˈklærəfaɪ/", "elaborate": "/ɪˈlæbəreɪt/", "summary": "/ˈsʌməri/", "next step": "/ˈnekst step/", "progress": "/ˈprɑːɡres/", "status": "/ˈsteɪtəs/", "result": "/rɪˈzʌlt/", "success": "/səkˈses/"};
 const EXAMPLES = {"hello": ["Hello, welcome to our project site.", "你好，欢迎来到我们的项目现场。"], "good morning": ["Good morning, everyone. Let's start the meeting.", "大家早上好，我们开始会议吧。"], "good afternoon": ["Good afternoon, Mr. Kowalski. Thank you for coming.", "下午好，Kowalski先生，感谢您过来。"], "nice to meet you": ["Nice to meet you. I am from the project team.", "很高兴认识你，我来自项目团队。"], "thank you": ["Thank you for your support on this issue.", "感谢你在这个问题上的支持。"], "you're welcome": ["You're welcome. Please let me know if you need anything else.", "不客气，如需其他帮助请告诉我。"], "my name is": ["My name is Anna, and I work on this project.", "我叫安娜，参与这个项目工作。"], "from": ["I am from the Polish branch.", "我来自波兰分公司。"], "Poland": ["Poland is an important market for our company.", "波兰是我们公司的重要市场。"], "branch": ["Our Polish branch will support this project.", "我们的波兰分公司将支持这个项目。"], "colleague": ["My colleague will join the meeting later.", "我的同事稍后会参加会议。"], "friend": ["He is my friend and also my colleague.", "他是我的朋友，也是我的同事。"], "family": ["My family lives in Warsaw now.", "我的家人现在住在华沙。"], "live": ["I live near the construction site.", "我住在施工现场附近。"], "work": ["I work in the construction team.", "我在施工团队工作。"], "project": ["This project is very important to our company.", "这个项目对我们公司非常重要。"], "team": ["Our team will finish the task on time.", "我们的团队会按时完成任务。"], "member": ["He is a member of the site team.", "他是现场团队的一名成员。"], "leader": ["The project leader will chair the meeting.", "项目负责人将主持会议。"], "department": ["The technical department reviewed the drawings.", "技术部门审核了图纸。"], "construction": ["Construction will start next month.", "施工将于下个月开始。"], "site": ["Please wear your helmet on site.", "请在现场佩戴安全帽。"], "engineer": ["The engineer checked the foundation work.", "工程师检查了基础施工。"], "architect": ["The architect explained the design concept.", "建筑师解释了设计理念。"], "contractor": ["The contractor must follow the safety rules.", "承包商必须遵守安全规定。"], "client": ["The client approved the updated schedule.", "业主批准了更新后的进度计划。"], "supervisor": ["The supervisor checked the quality of the work.", "监理检查了工程质量。"], "drawing": ["Please check this drawing before construction.", "施工前请核对这张图纸。"], "permit": ["We are waiting for the construction permit.", "我们正在等待施工许可证。"], "schedule": ["The schedule shows the work should finish on Friday.", "进度表显示该工作应在周五完成。"], "Monday": ["The weekly report is due next Monday.", "周报下周一截止。"], "Tuesday": ["We will have a coordination meeting on Tuesday.", "我们周二将召开协调会。"], "Wednesday": ["The inspection is planned for Wednesday.", "检查计划在周三进行。"], "Thursday": ["Please send the update before Thursday.", "请在周四前发送更新。"], "Friday": ["The deadline is this Friday.", "截止日期是本周五。"], "Saturday": ["The site is closed on Saturday.", "现场周六停工。"], "Sunday": ["We will rest on Sunday.", "我们周日休息。"], "today": ["What is your work plan today?", "你今天的工作计划是什么？"], "tomorrow": ["We will check the drawings tomorrow.", "我们明天核对图纸。"], "yesterday": ["We finished the task yesterday.", "我们昨天完成了任务。"], "morning": ["The meeting starts in the morning.", "会议上午开始。"], "afternoon": ["I will send the report this afternoon.", "我今天下午发送报告。"], "evening": ["We will review the documents this evening.", "我们今晚审核文件。"], "night": ["The workers should not work late at night without approval.", "未经批准，工人不应深夜施工。"], "time": ["What time is the site meeting?", "现场会议几点开始？"], "deadline": ["The deadline for this task is next Friday.", "这项任务的截止日期是下周五。"], "milestone": ["Foundation completion is our first milestone.", "基础完成是我们的第一个里程碑。"], "timeline": ["The project timeline needs to be updated.", "项目时间表需要更新。"], "meeting": ["We have a weekly meeting every Monday.", "我们每周一开周例会。"], "report": ["Please prepare the weekly progress report.", "请准备周进度报告。"], "update": ["I will send you a project update later.", "我稍后给你发送项目进展更新。"], "task": ["This task must be finished today.", "这项任务必须今天完成。"], "finish": ["We need to finish the inspection before noon.", "我们需要在中午前完成检查。"], "start": ["The concrete work will start tomorrow.", "混凝土施工明天开始。"], "week": ["This week is important for the project.", "本周对项目很重要。"], "month": ["The next month will be very busy.", "下个月会很忙。"], "quarter": ["The main work will start in the third quarter.", "主要工作将在第三季度开始。"], "year": ["The project will continue this year.", "该项目今年将继续推进。"], "plan": ["We need a clear construction plan.", "我们需要一份清晰的施工计划。"], "need": ["I need your help with this document.", "我需要你帮我处理这份文件。"], "want": ["I want to confirm the project scope.", "我想确认项目范围。"], "help": ["Can you help me check this report?", "你能帮我检查这份报告吗？"], "ask": ["I want to ask a question about the schedule.", "我想问一个关于进度的问题。"], "answer": ["Please answer the client's question clearly.", "请清楚回答业主的问题。"], "question": ["Do you have any questions about the drawings?", "你对图纸有问题吗？"], "problem": ["We have a technical problem on site.", "我们现场有一个技术问题。"], "solution": ["We need to find a practical solution.", "我们需要找到一个可行的解决方案。"], "water": ["Please bring some water to the site office.", "请带一些水到现场办公室。"], "coffee": ["Let's have a coffee break after the meeting.", "会议后我们休息一下喝杯咖啡。"], "lunch": ["We can discuss this issue after lunch.", "我们午饭后可以讨论这个问题。"], "break": ["Let's take a ten-minute break.", "我们休息十分钟吧。"], "busy": ["I am busy preparing the weekly report.", "我正忙着准备周报。"], "free": ["Are you free this afternoon?", "你今天下午有空吗？"], "happy": ["I am happy with the project progress.", "我对项目进展感到满意。"], "requirement": ["We must understand the client's requirement.", "我们必须理解业主需求。"], "blocker": ["The permit issue is a blocker for the next step.", "许可证问题是下一步工作的阻塞点。"], "delay": ["The material delivery may cause a delay.", "材料交付可能导致延误。"], "adjustment": ["The schedule needs a small adjustment.", "进度计划需要小幅调整。"], "priority": ["Safety is always our top priority.", "安全始终是我们的首要任务。"], "resource": ["We need more labor resources for this work.", "这项工作需要更多劳动力资源。"], "clarification": ["We need clarification on the design requirement.", "我们需要对设计要求进行澄清。"], "feedback": ["The client gave positive feedback on our plan.", "业主对我们的方案给予了积极反馈。"], "approval": ["We cannot start without formal approval.", "没有正式批准，我们不能开始。"], "demo": ["The engineer will give a short design demo.", "工程师将做一个简短的设计演示。"], "stakeholder": ["All stakeholders should attend the meeting.", "所有相关方都应参加会议。"], "deliverable": ["The final deliverable is the completed building.", "最终交付物是建成的建筑。"], "scope": ["Please confirm the project scope before pricing.", "报价前请确认项目范围。"], "coordination": ["Good coordination is important for site work.", "良好的协调对现场工作很重要。"], "like": ["I like working with this project team.", "我喜欢和这个项目团队一起工作。"], "love": ["I love learning practical English.", "我喜欢学习实用英语。"], "hate": ["I hate being late for meetings.", "我讨厌开会迟到。"], "food": ["Polish food is different from Chinese food.", "波兰食物和中国食物不同。"], "music": ["I listen to music after work.", "我下班后听音乐。"], "movie": ["We can watch a movie this weekend.", "我们周末可以看电影。"], "book": ["This book is about construction management.", "这本书是关于施工管理的。"], "travel": ["I want to travel to Krakow next month.", "我想下个月去克拉科夫旅行。"], "weekend": ["Have a nice weekend.", "祝你周末愉快。"], "holiday": ["I will take a short holiday next month.", "我下个月会休一个短假。"], "gift": ["This is a small gift for the client.", "这是给业主的小礼物。"], "party": ["We will have a team party on Friday.", "我们周五会举行团队聚会。"], "birthday": ["Happy birthday to you.", "祝你生日快乐。"], "weather": ["The weather is good for site work today.", "今天的天气适合现场施工。"], "sunny": ["It is sunny and warm today.", "今天阳光明媚，天气暖和。"], "stand-up": ["We have a daily stand-up every morning.", "我们每天早上开每日站会。"], "sync": ["Let's have a quick sync after lunch.", "我们午饭后快速同步一下。"], "action item": ["This is an action item for the safety engineer.", "这是安全工程师的一个行动项。"], "follow up": ["I will follow up the permit approval.", "我会跟进许可证审批。"], "agenda": ["Please add this topic to the meeting agenda.", "请把这个议题加入会议议程。"], "minutes": ["I will send the meeting minutes later.", "我稍后发送会议纪要。"], "decision": ["We need to make a decision today.", "我们今天需要做出决定。"], "objection": ["Does anyone have any objection to this plan?", "有人对这个计划有异议吗？"], "consensus": ["We reached a consensus on the schedule.", "我们就进度计划达成了一致。"], "wrap up": ["Let's wrap up the meeting now.", "我们现在结束会议吧。"], "presentation": ["The project presentation will start at ten.", "项目汇报将在十点开始。"], "discuss": ["We need to discuss the safety plan.", "我们需要讨论安全计划。"], "talk": ["I will have a talk with the client tomorrow.", "我明天会和业主谈一下。"], "share": ["Please share the report with the team.", "请把报告分享给团队。"], "quality": ["Quality control is important for this project.", "质量控制对本项目很重要。"], "buy": ["We need to buy more safety shoes.", "我们需要购买更多安全鞋。"], "sell": ["This shop sells construction tools.", "这家商店卖施工工具。"], "price": ["What is the price of this material?", "这种材料的价格是多少？"], "cheap": ["This tool is cheap but useful.", "这个工具便宜但有用。"], "expensive": ["The material is too expensive for our budget.", "这种材料对我们的预算来说太贵了。"], "shop": ["There is a hardware shop near the site.", "工地附近有一家五金店。"], "supermarket": ["I will go to the supermarket after work.", "我下班后去超市。"], "market": ["We checked the building material market yesterday.", "我们昨天调研了建材市场。"], "clothes": ["Workers must wear proper work clothes on site.", "工人必须在现场穿合适的工作服。"], "shoes": ["Safety shoes are required on the construction site.", "施工现场必须穿安全鞋。"], "bag": ["Please put the tools in this bag.", "请把工具放进这个包里。"], "money": ["We need enough money for the purchase.", "我们需要足够的资金进行采购。"], "pay": ["Can I pay by card?", "我可以刷卡支付吗？"], "card": ["I forgot my bank card today.", "我今天忘记带银行卡了。"], "cash": ["Some small shops only accept cash.", "一些小商店只收现金。"], "key point": ["The key point is safety and quality control.", "核心要点是安全和质量控制。"], "highlight": ["The highlight of this design is natural light.", "这个设计的亮点是自然采光。"], "data": ["The data supports our technical proposal.", "这些数据支持我们的技术方案。"], "metric": ["This metric shows the quality performance.", "这个指标反映了质量表现。"], "Q&A": ["The Q&A session will start after the presentation.", "问答环节将在汇报后开始。"], "clarify": ["Please clarify this technical question.", "请澄清这个技术问题。"], "elaborate": ["Can you elaborate on the cost saving plan?", "你能详细说明成本节约方案吗？"], "summary": ["Please give a short summary of the meeting.", "请对会议做一个简短总结。"], "next step": ["The next step is to prepare the documents.", "下一步是准备文件。"], "progress": ["The project progress is under control.", "项目进展处于受控状态。"], "status": ["Please update the current status of the work.", "请更新该工作的当前状态。"], "result": ["The inspection result is acceptable.", "验收结果可以接受。"], "success": ["Teamwork is important for project success.", "团队合作对项目成功很重要。"]};
 const DAYS = Object.keys(DATA.words);
 
@@ -272,6 +689,7 @@ function normalize(s){ return (s || "").trim().toLowerCase().replace(/\s+/g, " "
 function clearTimers(){ timerHandles.forEach(t => clearTimeout(t)); timerHandles = []; }
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 function getExample(w){ return EXAMPLES[w.en] || ['We need to use ' + w.en + ' in our daily project work.', '我们需要在日常项目工作中使用这个表达。']; }
+function getPhonetic(w){ return PHONETICS[w.en] || '/ ' + w.en + ' /'; }
 
 function init(){
   renderDaySelect();
@@ -306,17 +724,16 @@ function bindTabs(){
   document.querySelectorAll("#pageTabs button").forEach(btn => {
     btn.onclick = () => {
       stopAuto();
-      document.querySelectorAll("#pageTabs button").forEach(x => x.classList.remove("active"));
-      btn.classList.add("active");
       document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
       qs(btn.dataset.page + "Page").classList.remove("hidden");
+      setActiveNav(btn.dataset.page);
       renderAll();
+      window.scrollTo({top:0, behavior:"smooth"});
     };
   });
 }
 
 function renderAll(){
-  renderWordsTable();
   renderChoice();
   renderSpell();
   renderDictationWordGrid();
@@ -347,17 +764,17 @@ function stopAuto(){
   clearTimers();
   if("speechSynthesis" in window) window.speechSynthesis.cancel();
   if(qs("wordReadStatus")) qs("wordReadStatus").textContent = "已停止自动朗读。";
-  if(qs("dictationStatus")) qs("dictationStatus").textContent = "已停止自动听写。";
+  if(qs("dictationStatus")) qs("dictationStatus").textContent = "已停止听写。";
   if(qs("dialogueStatus")) qs("dialogueStatus").textContent = "已停止对话朗读。";
   if(qs("sentenceStatus")) qs("sentenceStatus").textContent = "已停止句型朗读。";
 }
 
 function resetStatuses(){
   qs("wordReadStatus").textContent = "未开始。请选择日期后点击“自动朗读当天30词”。";
-  qs("dictationStatus").textContent = "未开始。点击“开始每日自动听写”。";
+  qs("dictationStatus").textContent = "未开始。点击“开始每日单词连续听写”。";
   qs("dialogueStatus").textContent = "未开始。点击“朗读当天全部对话”。";
   qs("sentenceStatus").textContent = "未开始。点击“朗读当天全部句型”。";
-  qs("wordReadProgress").style.width = "0%";
+  if(qs("wordReadProgress")) qs("wordReadProgress").style.width = "0%";
   qs("dictationProgress").style.width = "0%";
   qs("dialogueProgress").style.width = "0%";
   qs("sentenceProgress").style.width = "0%";
@@ -383,7 +800,7 @@ function countdown(seconds, onTick, onDone){
   timerHandles.push(t);
 }
 
-function readWordThreeTimes(text, updateStatus, done){
+function readWordTwoTimes(text, updateStatus, done){
   if(autoStop) return;
   updateStatus(1, 0);
   speak(text, () => {
@@ -395,14 +812,27 @@ function readWordThreeTimes(text, updateStatus, done){
         if(autoStop) return;
         countdown(5, left => updateStatus(2, left), () => {
           if(autoStop) return;
-          updateStatus(3, 0);
-          speak(text, () => {
-            if(autoStop) return;
-            countdown(5, left => updateStatus(3, left), () => {
-              if(autoStop) return;
-              if(done) done();
-            });
-          });
+          if(done) done();
+        });
+      });
+    });
+  });
+}
+
+
+function readDictationWordTwoTimes(text, updateStatus, done){
+  if(autoStop) return;
+  updateStatus(1, 0);
+  speak(text, () => {
+    if(autoStop) return;
+    countdown(7, left => updateStatus(1, left), () => {
+      if(autoStop) return;
+      updateStatus(2, 0);
+      speak(text, () => {
+        if(autoStop) return;
+        countdown(7, left => updateStatus(2, left), () => {
+          if(autoStop) return;
+          if(done) done();
         });
       });
     });
@@ -512,6 +942,7 @@ function renderWordsTable(){
 
 function renderDictationWordGrid(){
   const grid = qs("dictationWordGrid");
+  if(qs("dictationDayBadge")) qs("dictationDayBadge").textContent = currentDay + " · 每日单词连续听写";
   if(!grid) return;
   grid.innerHTML = "";
   dayWords().forEach((w, i) => {
@@ -527,25 +958,57 @@ function renderDictationWordGrid(){
     en.className = "dict-en";
     en.textContent = w.en;
 
+    const phonetic = document.createElement("div");
+    phonetic.className = "dict-phonetic";
+    phonetic.textContent = getPhonetic(w);
+
     const cn = document.createElement("div");
     cn.className = "dict-cn";
     cn.textContent = w.cn;
 
-    const use = document.createElement("div");
-    use.className = "dict-use";
-    use.textContent = w.usage;
+    const exPair = getExample(w);
+    const exBox = document.createElement("div");
+    exBox.className = "word-example";
 
-    const btn = document.createElement("button");
-    btn.className = "secondary";
-    btn.style.marginTop = "8px";
-    btn.textContent = "朗读";
-    btn.onclick = () => speak(w.en);
+    const exLabel = document.createElement("div");
+    exLabel.className = "word-example-label";
+    exLabel.textContent = "Example sentence";
+
+    const exEn = document.createElement("div");
+    exEn.className = "word-example-en";
+    exEn.textContent = exPair[0];
+
+    const exCn = document.createElement("div");
+    exCn.className = "word-example-cn";
+    exCn.textContent = exPair[1];
+
+    const btnRow = document.createElement("div");
+    btnRow.className = "row";
+    btnRow.style.marginTop = "8px";
+
+    const wordBtn = document.createElement("button");
+    wordBtn.className = "secondary";
+    wordBtn.textContent = "朗读单词";
+    wordBtn.onclick = () => speak(w.en);
+
+    const exBtn = document.createElement("button");
+    exBtn.className = "secondary";
+    exBtn.textContent = "朗读例句";
+    exBtn.onclick = () => speak(exPair[0]);
+
+    btnRow.appendChild(wordBtn);
+    btnRow.appendChild(exBtn);
+
+    exBox.appendChild(exLabel);
+    exBox.appendChild(exEn);
+    exBox.appendChild(exCn);
 
     card.appendChild(no);
     card.appendChild(en);
+    card.appendChild(phonetic);
     card.appendChild(cn);
-    card.appendChild(use);
-    card.appendChild(btn);
+    card.appendChild(exBox);
+    card.appendChild(btnRow);
     grid.appendChild(card);
   });
 
@@ -565,7 +1028,7 @@ function startWordAutoRead(){
   autoStop = false;
   autoMode = "words";
   currentReadIndex = 0;
-  qs("wordReadProgress").style.width = "0%";
+  if(qs("wordReadProgress")) qs("wordReadProgress").style.width = "0%";
   renderWordsTable();
   runWordRead(0);
 }
@@ -584,7 +1047,7 @@ function runWordRead(i){
   renderWordsTable();
   const w = list[i];
   qs("wordReadProgress").style.width = (i / list.length * 100) + "%";
-  readWordThreeTimes(
+  readWordTwoTimes(
     w.en,
     function(round, waitLeft){
       if(waitLeft > 0){
@@ -607,9 +1070,12 @@ function runWordRead(i){
 
 function renderChoice(){
   const w = dayWords()[choiceIdx];
-  qs("choiceDayBadge").textContent = currentDay + " · 汉语选择";
+  qs("choiceDayBadge").textContent = currentDay + " · 学习";
   qs("choiceWord").textContent = w.en;
-  qs("choiceUsage").textContent = w.usage;
+  qs("choicePhonetic").textContent = getPhonetic(w);
+  const choiceEx = getExample(w);
+  qs("choiceExampleEn").textContent = choiceEx[0];
+  qs("choiceExampleCn").textContent = choiceEx[1];
   qs("choiceIndex").textContent = "第 " + (choiceIdx + 1) + " / " + dayWords().length + " 个";
   qs("choiceScore").textContent = "正确 " + choiceCorrect + " / " + choiceTotal;
   qs("choiceProgress").style.width = (choiceIdx / dayWords().length * 100) + "%";
@@ -641,15 +1107,18 @@ function renderChoice(){
 }
 function nextChoice(){ choiceIdx = (choiceIdx + 1) % dayWords().length; renderChoice(); }
 function speakCurrentChoice(){ speak(dayWords()[choiceIdx].en); }
+function speakChoiceExample(){ speak(getExample(dayWords()[choiceIdx])[0]); }
 
 function renderSpell(){
   const w = dayWords()[spellIdx];
   qs("spellDayBadge").textContent = currentDay + " · 拼写 / 听写";
   qs("spellCN").textContent = w.cn;
-  qs("spellUsage").textContent = w.usage;
   qs("spellIndex").textContent = "第 " + (spellIdx + 1) + " / " + dayWords().length + " 个";
   qs("spellScore").textContent = "正确 " + spellCorrect + " / " + spellTotal;
+  if(qs("spellProgress")) qs("spellProgress").style.width = (spellIdx / dayWords().length * 100) + "%";
+  spellHintLevel = 0;
   qs("spellInput").value = "";
+  if(qs("spellHint")) qs("spellHint").textContent = "";
   qs("spellFeedback").textContent = "";
   renderDictationWordGrid();
 }
@@ -685,7 +1154,7 @@ function runDictation(i){
   if(autoStop || autoMode !== "dictation") return;
   const list = dayWords();
   if(i >= list.length){
-    qs("dictationStatus").innerHTML = "✅ " + currentDay + " 当天30个单词听写完成。";
+    qs("dictationStatus").innerHTML = "✅ " + currentDay + " 当天30个单词连续听写完成。";
     qs("dictationProgress").style.width = "100%";
     return;
   }
@@ -693,17 +1162,17 @@ function runDictation(i){
   renderSpell();
   const w = list[i];
   qs("dictationProgress").style.width = (i / list.length * 100) + "%";
-  readWordThreeTimes(
+  readDictationWordTwoTimes(
     w.en,
     function(round, waitLeft){
       if(waitLeft > 0){
         qs("dictationStatus").innerHTML =
-          "正在听写 <strong>" + currentDay + "</strong>：第 <strong>" + (i+1) + "</strong> / 30 个" +
+          "每日单词连续听写 <strong>" + currentDay + "</strong>：第 <strong>" + (i+1) + "</strong> / 30 个" +
           "<br>中文：<strong>" + escapeHtml(w.cn) + "</strong>" +
           "<br>第 <strong>" + round + "</strong> 遍已读完，等待 <strong>" + waitLeft + "</strong> 秒。";
       } else {
         qs("dictationStatus").innerHTML =
-          "正在听写 <strong>" + currentDay + "</strong>：第 <strong>" + (i+1) + "</strong> / 30 个" +
+          "每日单词连续听写 <strong>" + currentDay + "</strong>：第 <strong>" + (i+1) + "</strong> / 30 个" +
           "<br>中文：<strong>" + escapeHtml(w.cn) + "</strong>" +
           "<br>当前朗读第 <strong>" + round + "</strong> 遍。";
       }
@@ -778,11 +1247,68 @@ function readAllSentences(){
   readListOnce(all, qs("sentenceStatus"), qs("sentenceProgress"), "正在朗读当天全部句型");
 }
 
+
+function setActiveNav(pageName){
+  document.querySelectorAll("#pageTabs button").forEach(x => x.classList.toggle("active", x.dataset.page === pageName));
+  document.querySelectorAll("#bottomNav button").forEach(x => x.classList.toggle("active", x.dataset.page === pageName));
+}
+function switchPageFromBottom(pageName, btn){
+  stopAuto();
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  qs(pageName + "Page").classList.remove("hidden");
+  setActiveNav(pageName);
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+
+function goPage(pageName){
+  stopAuto();
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  qs(pageName + "Page").classList.remove("hidden");
+  setActiveNav(pageName);
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+let spellHintLevel = 0;
+
+function buildHint(answer, level){
+  const chars = answer.split("");
+  let letterCount = chars.filter(c => /[A-Za-z]/.test(c)).length;
+  let revealTarget = Math.min(Math.max(level, 1), letterCount);
+  let seen = 0;
+  let result = chars.map(c => {
+    if(c === " ") return " / ";
+    if(!/[A-Za-z]/.test(c)) return c;
+    seen++;
+    return seen <= revealTarget ? c : "_";
+  }).join(" ");
+  return result;
+}
+
+function showSpellHint(){
+  const w = dayWords()[spellIdx];
+  spellHintLevel++;
+  const hint = buildHint(w.en, spellHintLevel);
+  qs("spellHint").innerHTML = "<span class='ok'>提示：" + escapeHtml(hint) + "</span>";
+}
+
 window.addEventListener("beforeunload", () => {
   if("speechSynthesis" in window) window.speechSynthesis.cancel();
 });
 
 init();
 </script>
+
+<nav id="bottomNav">
+  <button data-page="home" class="active" onclick="switchPageFromBottom('home', this)"><span class="navIcon">🏠</span><span>首页</span></button>
+  <button data-page="choice" onclick="switchPageFromBottom('choice', this)"><span class="navIcon">①</span><span>学习</span></button>
+  <button data-page="spell" onclick="switchPageFromBottom('spell', this)"><span class="navIcon">✍️</span><span>拼写</span></button>
+  <button data-page="dictation" onclick="switchPageFromBottom('dictation', this)"><span class="navIcon">🎧</span><span>听写</span></button>
+  <button data-page="dialogues" onclick="switchPageFromBottom('dialogues', this)"><span class="navIcon">💬</span><span>对话</span></button>
+  <button data-page="sentences" onclick="switchPageFromBottom('sentences', this)"><span class="navIcon">⭐</span><span>句型</span></button>
+</nav>
+
 </body>
 </html>
